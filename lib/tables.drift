@@ -1,0 +1,22 @@
+-- this is the tables.drift file
+CREATE TABLE todos (
+    id INT NOT NULL PRIMARY KEY AUTOINCREMENT,
+    title TEXT,
+    body TEXT,
+    category INT REFERENCES categories (id)
+);
+
+CREATE TABLE categories (
+    id INT NOT NULL PRIMARY KEY AUTOINCREMENT,
+    description TEXT
+) AS Category; -- see the explanation on "AS Category" below
+
+todosInCategory: SELECT * FROM todos WHERE category = ?;
+
+countEntries:
+  SELECT
+    c.description,
+    (SELECT COUNT(*) FROM todos WHERE category = c.id) AS amount
+  FROM categories c
+  UNION ALL
+  SELECT null, (SELECT COUNT(*) FROM todos WHERE category IS NULL);
