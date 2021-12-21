@@ -1,6 +1,8 @@
 # isolate_test
 
-Test to isolate (heh) the issue with isolates encountered in a larger application
+Test to isolate (heh) the issue with isolates encountered in a larger application.
+
+The related issue [can be found here](https://github.com/simolus3/moor/issues/1593).
 
 ## Getting Started
 
